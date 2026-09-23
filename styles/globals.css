@@ -1289,7 +1289,7 @@ section,
   clip-path: inset(0);
 }
 
-.call-to-action img {
+.call-to-action video {
   position: fixed;
   top: 0;
   left: 0;

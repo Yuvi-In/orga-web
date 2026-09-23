@@ -2,21 +2,20 @@
 
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 import Script from "next/script";
 import { useEffect } from "react";
 
 // Type declarations for global objects
 declare global {
   interface Window {
-    dataLayer: any[];
-    fbq: any;
-    _fbq: any;
-    gtag: any;
+    dataLayer: unknown[];
+    fbq: (...args: unknown[]) => void;
+    _fbq: unknown;
+    gtag: (...args: unknown[]) => void;
   }
 }
 
-export default function page() {
+export default function Page() {
   useEffect(() => {
     // Only run on client-side to avoid hydration mismatch
     if (typeof window === "undefined") return;
@@ -129,7 +128,7 @@ export default function page() {
       <main className="main">
         {/* Hero Section */}
         <section id="hero" className="hero section dark-background">
-          <img src="/img/hero-bg.jpg" alt="" data-aos="fade-in" />
+          <img src="/img/hero-bg.jpg" alt="" fetchPriority="high" data-aos="fade-in" />
 
           <div className="container">
             <div
@@ -224,7 +223,9 @@ export default function page() {
             <div className="row_gy-4">
               <div className="col-lg-6 order-lg-1 order-1" id="vision-box">
                 <div className="vision-box-cover">
-                  <img src="/img/lasrr.gif" className="img-fluid" alt="" />
+                  <video className="img-fluid" autoPlay loop muted playsInline preload="none" poster="/img/lasrr-poster.jpg" aria-label="Laser cutting in operation">
+                    <source src="/img/lasrr-optimized.mp4" type="video/mp4" />
+                  </video>
                   <div
                     className="col-xl-3 col-md-6 aos-init aos-animate"
                     data-aos="zoom-in"
@@ -316,8 +317,8 @@ export default function page() {
                     quality checking, and packing, both of our companies
                     guarantee{" "}
                     <b>precision, efficiency, and outstanding results.</b>
-                    Whether you're looking to safeguard your business with
-                    anti-counterfeit hologram labels or celebrate life's moments
+                    Whether you&apos;re looking to safeguard your business with
+                    anti-counterfeit hologram labels or celebrate life&apos;s moments
                     with luxurious wedding cards, Orgalaser Group is your
                     trusted partner.
                   </p>
@@ -412,7 +413,7 @@ export default function page() {
                   data-aos="fade-up"
                   data-aos-delay="100"
                 >
-                  <img src="/img/features-bg.jpg" alt="" />
+                  <img src="/img/features-bg.jpg" alt="" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -504,7 +505,9 @@ export default function page() {
           id="call-to-action"
           className="call-to-action section dark-background"
         >
-          <img src="/img/hero-bg.gif" className="call-to-action-bg" alt="" />
+          <video className="call-to-action-bg" autoPlay loop muted playsInline preload="none" poster="/img/hero-bg.jpg" aria-hidden="true">
+            <source src="/img/hero-bg-optimized.mp4" type="video/mp4" />
+          </video>
 
           <div className="container">
             <div
@@ -575,7 +578,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-1.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Wedding Invitations</h4>
@@ -604,7 +607,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-2.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Wood CNC</h4>
@@ -633,7 +636,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-3.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Stock Hologram Labels</h4>
@@ -665,7 +668,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-4.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Souvenirs and Handicrafts</h4>
@@ -697,7 +700,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-5.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Acrylic CNC Engraving</h4>
@@ -728,7 +731,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-6.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Customized Hologram Labels</h4>
@@ -757,7 +760,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-7.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Leather Cutting & Marking</h4>
@@ -789,7 +792,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-8.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Sign Boards</h4>
@@ -820,7 +823,7 @@ export default function page() {
                   <img
                     src="/img/masonry-portfolio/masonry-portfolio-9.jpg"
                     className="img-fluid"
-                    alt=""
+                    alt="" loading="lazy" decoding="async"
                   />
                   <div className="portfolio-info">
                     <h4>Hologram Labels</h4>
@@ -853,7 +856,7 @@ export default function page() {
           <div className="container" data-aos="fade-up" data-aos-delay="100">
             <div className="row gy-4 align-items-center justify-content-between">
               <div className="col-lg-5">
-                <img src="/img/stats-img.png" alt="" className="img-fluid" />
+                <img src="/img/stats-img.png" alt="" className="img-fluid" loading="lazy" decoding="async" />
               </div>
 
               <div className="col-lg-6">
@@ -982,7 +985,7 @@ export default function page() {
             <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
               <iframe
                 style={{ border: 0, width: "100%", height: "270px" }}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6703583098556!2d79.89598237591241!3d7.047967592954241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f74023bc0605%3A0xad198ecb82b0d132!2sOrgalaser%20Cutting!5e0!3m2!1sen!2slk!4v1733494252926!5m2!1sen!2slk"
+                loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6703583098556!2d79.89598237591241!3d7.047967592954241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f74023bc0605%3A0xad198ecb82b0d132!2sOrgalaser%20Cutting!5e0!3m2!1sen!2slk!4v1733494252926!5m2!1sen!2slk"
               ></iframe>
             </div>
             {/* End Google Maps */}

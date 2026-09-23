@@ -12,10 +12,10 @@ import "swiper/css/pagination";
 // Type declarations for global objects
 declare global {
   interface Window {
-    dataLayer: any[];
-    fbq: any;
-    _fbq: any;
-    gtag: any;
+    dataLayer: unknown[];
+    fbq: (...args: unknown[]) => void;
+    _fbq: unknown;
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -27,7 +27,7 @@ const HologramPage = () => {
     // Google Analytics
     const loadGoogleAnalytics = () => {
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
+      function gtag(...args: unknown[]) {
         window.dataLayer.push(args);
       }
       gtag("js", new Date());
@@ -147,6 +147,8 @@ const HologramPage = () => {
                         alt={`Hologram sample ${i + 1}`}
                         width={800}
                         height={600}
+                        sizes="(max-width: 992px) 100vw, 800px"
+                        loading={i === 0 ? "eager" : "lazy"}
                       />
                     </SwiperSlide>
                   ))}

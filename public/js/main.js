@@ -144,14 +144,16 @@
       let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
       let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
-      let initIsotope;
-      imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-        initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-          itemSelector: '.isotope-item',
-          layoutMode: layout,
-          filter: filter,
-          sortBy: sort
-        });
+      const container = isotopeItem.querySelector('.isotope-container');
+      const initIsotope = new Isotope(container, {
+        itemSelector: '.isotope-item',
+        layoutMode: layout,
+        filter: filter,
+        sortBy: sort
+      });
+      // Lazy images may be outside the viewport; relayout as each one arrives.
+      imagesLoaded(container).on('progress', function() {
+        initIsotope.layout();
       });
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
